@@ -37,6 +37,7 @@ gem 'postrank-uri'
 
 group :development do
   gem 'pry-byebug'
+  gem 'guard-livereload', '~> 2.4', require: false
 end
 
 group :test do
