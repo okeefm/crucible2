@@ -3,10 +3,22 @@ $(window).on('load', ->
 )
 
 class Crucible.TestExecutor
+  tests: []
 
   constructor: ->
     @element = $('.test-executor')
     @element.find('.execute').click(@execute)
+    $.getJSON("api/tests.json").success((data) => 
+      @tests = data['tests']
+      @renderSuites()
+    )
+
+  renderSuites: =>
+    suitesElement = @element.find('.test-suites')
+    suitesElement.empty()
+    $(@tests).each (i, test) =>
+      html = HandlebarsTemplates['views/templates/servers/test_select']({test: test})
+      suitesElement.append(html)
 
   execute: =>
     tests = $($.map(@element.find(':checked'), (e) -> e.name))

@@ -1,0 +1,60 @@
+{
+  "name": "Case",
+  "version": "1.2.1",
+  "main": "dist/Case.js",
+  "description": "Extensible string utility for converting, identifying and flipping string case",
+  "keywords": [
+    "string",
+    "case",
+    "camel",
+    "title",
+    "upper",
+    "lower",
+    "snake",
+    "squish",
+    "pascal",
+    "constant",
+    "flip",
+    "capitalization",
+    "converter"
+  ],
+  "author": {
+    "name": "Nathan Bubna",
+    "email": "nathan@esha.com",
+    "url": "http://www.esha.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://github.com/nbubna/Case.git"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "http://www.opensource.org/licenses/mit-license.php"
+    },
+    {
+      "type": "GPL",
+      "url": "http://www.gnu.org/licenses/gpl.html"
+    }
+  ],
+  "ignore": [
+    "**/.*",
+    "libs",
+    "src",
+    "component.json",
+    "Gruntfile.js",
+    "CONTRIBUTING.md",
+    "node_modules",
+    "components"
+  ],
+  "homepage": "https://github.com/nbubna/Case",
+  "_release": "1.2.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "1.2.1",
+    "commit": "e45cd2e216b751d4e9f63c0a4971940d0c2cdbe2"
+  },
+  "_source": "https://github.com/nbubna/Case.git",
+  "_target": "~1.2.1",
+  "_originalSource": "Case"
+}

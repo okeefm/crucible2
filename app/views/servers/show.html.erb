@@ -81,10 +81,8 @@
                     <button type="button" class="btn secondary col-md-6 ">Show Individual Tests</button>
                   </div>
                   <div class="panel-group test-results" id="accordion" role="tablist" aria-multiselectable="true">
-                    <div>
-                      <% @tests.each do |test| %>
-                        <%= render partial: 'test_select', locals: {test: test}%>
-                      <% end %>
+                    <div class="test-suites">
+                      loading indicator
                     </div>
                     <%= render partial: 'individual_results'%>
                   </div>
