@@ -13,6 +13,9 @@ class Crucible.Conformance
         success: ((data) =>
           @updateConformance(data)
           @removeConformanceSpinner()
+        ),
+        fail: ((data) =>
+          @removeConformanceSpinner()
         )
     });
 

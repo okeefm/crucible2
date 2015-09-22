@@ -31,135 +31,43 @@
                             </div>
                             <div class="col-md-8">
                               <div>
-                                <!---->
+                                <% if @conformance['format'] %>
+                                  <% @conformance['format'].each do |f| %>
+                                    <%= puts f + " " %>
+                                  <% end %>
+                                <% end %>
                               </div>
                             </div>
                           </div>
-                          <div id="ember7725" class="ember-view">
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div><label>ADDITIONAL PROFILES SUPPORTED:</label></div>
-                              </div>
-                              <div class="col-md-4 word-wrap">
-                                --
-                              </div>
-                              <!---->
-                            </div>
-                          </div>
+                          <% if @conformance.respond_to?(:profile) %>
+                            <%= render partial: 'conformance_metadata', locals: {title: "ADDITIONAL PROFILES SUPPORTED", boolean: false, value: @conformance.profile.length, isMultiple: false} %>
+                          <% else %>
+                            <%= render partial: 'conformance_metadata', locals: {title: "ADDITIONAL PROFILES SUPPORTED", boolean: false, value: @conformance['profile'].length, isMultiple: false} %>
+                          <% end %>
                         </div>
                       </div>
                       <!-- REST METADATA  -->
                       <div id="rest-metadata" class="tab-pane">
                         <div class="panel-body">
-                          <div id="ember7726" class="ember-view">
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div><label>MODE:</label></div>
-                              </div>
-                              <div class="col-md-4 word-wrap">
-                                server
-                              </div>
-                              <!---->
-                            </div>
-                          </div>
-                          <div id="ember7727" class="ember-view">
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div><label>IDENTIFIER:</label></div>
-                              </div>
-                              <div class="col-md-4 word-wrap">
-                                --
-                              </div>
-                              <!---->
-                            </div>
-                          </div>
-                          <div id="ember7728" class="ember-view">
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div><label>DOCUMENTATION:</label></div>
-                              </div>
-                              <div class="col-md-4 word-wrap">
-                                All the functionality defined in FHIR
-                              </div>
-                              <!---->
-                            </div>
-                          </div>
+                          <%= render partial: 'conformance_metadata', locals: {title: "MODE", boolean: false, value: nested_get(@conformance, 'rest', 0, 'mode'), isMultiple: false} %>
+                          <%= render partial: 'conformance_metadata', locals: {title: "IDENTIFIER", boolean: false, value: @conformance['identifier'], isMultiple: false} %>
+                          <%= render partial: 'conformance_metadata', locals: {title: "DOCUMENTATION", boolean: false, value: nested_get(@conformance, 'rest', 0, 'documentation'), isMultiple: false} %>
                         </div>
                       </div>
                       <!-- DOCUMENT METADATA  -->
                       <div id="document-metadata" class="tab-pane">
                         <div class="panel-body">
-                          <div id="ember7729" class="ember-view">
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div><label>MODE:</label></div>
-                              </div>
-                              <div class="col-md-4 word-wrap">
-                                --
-                              </div>
-                              <!---->
-                            </div>
-                          </div>
-                          <div id="ember7730" class="ember-view">
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div><label>PROFILE:</label></div>
-                              </div>
-                              <div class="col-md-4 word-wrap">
-                                --
-                              </div>
-                              <!---->
-                            </div>
-                          </div>
-                          <div id="ember7731" class="ember-view">
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div><label>DOCUMENTATION:</label></div>
-                              </div>
-                              <div class="col-md-4 word-wrap">
-                                --
-                              </div>
-                              <!---->
-                            </div>
-                          </div>
+                          <%= render partial: 'conformance_metadata', locals: {title: "MODE", boolean: false, value: nested_get(@conformance, 'document', 0, 'mode'), isMultiple: false} %>
+                          <%= render partial: 'conformance_metadata', locals: {title: "IDENTIFIER", boolean: false, value: nested_get(@conformance, 'document', 0, 'profile', 'reference'), isMultiple: false} %>
+                          <%= render partial: 'conformance_metadata', locals: {title: "IDENTIFIER", boolean: false, value: nested_get(@conformance, 'document', 0, 'profile', 'documentation'), isMultiple: false} %>
                         </div>
                       </div>
                       <!-- MESSAGING METADATA  -->
                       <div id="messaging-metadata" class="tab-pane">
                         <div class="panel-body">
-                          <div id="ember7732" class="ember-view">
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div><label>ENDPOINT:</label></div>
-                              </div>
-                              <div class="col-md-4 word-wrap">
-                                --
-                              </div>
-                              <!---->
-                            </div>
-                          </div>
-                          <div id="ember7733" class="ember-view">
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div><label>RELIABLE CACHE:</label></div>
-                              </div>
-                              <div class="col-md-4 word-wrap">
-                                --
-                              </div>
-                              <!---->
-                            </div>
-                          </div>
-                          <div id="ember7734" class="ember-view">
-                            <div class="row">
-                              <div class="col-md-4">
-                                <div><label>DOCUMENTATION:</label></div>
-                              </div>
-                              <div class="col-md-4 word-wrap">
-                                --
-                              </div>
-                              <!---->
-                            </div>
-                          </div>
+                          <%= render partial: 'conformance_metadata', locals: {title: "ENDPOINT", boolean: false, value: nested_get(@conformance, 'messaging', 0, 'endpoint'), isMultiple: false} %>
+                          <%= render partial: 'conformance_metadata', locals: {title: "RELIABLE CACHE", boolean: false, value: nested_get(@conformance, 'messaging', 0, 'reliableCache'), isMultiple: false} %>
+                          <%= render partial: 'conformance_metadata', locals: {title: "DOCUMENTATION", boolean: false, value: nested_get(@conformance, 'messaging', 0, 'documentation'), isMultiple: false} %>
                         </div>
                       </div>
                     </div>
